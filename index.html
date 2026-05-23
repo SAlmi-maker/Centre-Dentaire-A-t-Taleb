@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Centre Dentaire Aït Taleb</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ivory:   #F9F6F0;
+    --cream:   #EDE9DF;
+    --sand:    #D6CFC0;
+    --sage:    #6A8C72;
+    --sage-dk: #3E5C44;
+    --sage-lt: #EAF0EB;
+    --gold:    #B8975A;
+    --gold-lt: #F5EDDA;
+    --ink:     #1C1C1A;
+    --ink-mid: #4A4A45;
+    --ink-lt:  #8A8A82;
+    --white:   #FFFFFF;
+    --border:  rgba(28,28,26,0.10);
+    --serif:   'Cormorant Garamond', Georgia, serif;
+    --sans:    'Jost', sans-serif;
+    --radius:  16px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--ivory);
+    color: var(--ink);
+    overflow-x: hidden;
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6vw;
+    height: 72px;
+    background: rgba(249,246,240,0.92);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    transition: box-shadow 0.3s;
+  }
+
+  nav.scrolled { box-shadow: 0 4px 32px rgba(28,28,26,0.08); }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .nav-logo-icon {
+    width: 40px; height: 40px;
+    background: var(--sage);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .nav-logo-icon svg { width: 20px; height: 20px; color: white; }
+
+  .nav-brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+  .nav-brand-name {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: 0.02em;
+  }
+  .nav-brand-sub {
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--ink-lt);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--ink-mid);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--sage-dk); }
+
+  .nav-cta {
+    background: var(--sage);
+    color: var(--white) !important;
+    padding: 10px 24px;
+    border-radius: 100px;
+    font-weight: 500 !important;
+    letter-spacing: 0.04em !important;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--sage-dk) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    padding-top: 72px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 6vw 80px 8vw;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 28px;
+  }
+
+  .hero-eyebrow-line {
+    width: 36px; height: 1px;
+    background: var(--sage);
+  }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(46px, 5vw, 74px);
+    font-weight: 600;
+    line-height: 1.06;
+    letter-spacing: -0.5px;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--sage-dk);
+  }
+
+  .hero-desc {
+    font-size: 17px;
+    color: var(--ink-mid);
+    max-width: 440px;
+    line-height: 1.75;
+    font-weight: 300;
+    margin-bottom: 48px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 64px;
+  }
+
+  .btn-primary {
+    background: var(--sage);
+    color: var(--white);
+    border: none;
+    padding: 16px 36px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: var(--sans);
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .btn-primary:hover {
+    background: var(--sage-dk);
+    transform: translateY(-2px);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--ink-mid);
+    border: 1px solid var(--sand);
+    padding: 15px 28px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: var(--sans);
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-ghost:hover { border-color: var(--ink-mid); color: var(--ink); }
+
+  .hero-badges {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+
+  .hero-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .badge-icon {
+    width: 38px; height: 38px;
+    background: var(--sage-lt);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .badge-icon svg { width: 18px; height: 18px; color: var(--sage-dk); }
+  .badge-label { font-size: 12px; color: var(--ink-mid); font-weight: 400; line-height: 1.35; max-width: 90px; }
+  .badge-label strong { display: block; font-size: 14px; color: var(--ink); font-weight: 500; }
+
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+    background: var(--sage-dk);
+  }
+
+  .hero-img-wrap {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to right, rgba(62,92,68,0.55) 0%, transparent 50%),
+      url('https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=900&q=80') center/cover no-repeat;
+  }
+
+  .hero-img-card {
+    position: absolute;
+    bottom: 48px;
+    left: -28px;
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    box-shadow: 0 20px 60px rgba(28,28,26,0.2);
+    min-width: 220px;
+  }
+
+  .card-stat-num {
+    font-family: var(--serif);
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--sage-dk);
+    line-height: 1;
+  }
+
+  .card-stat-label {
+    font-size: 13px;
+    color: var(--ink-lt);
+    margin-top: 4px;
+    font-weight: 300;
+  }
+
+  .card-divider { height: 1px; background: var(--border); margin: 14px 0; }
+
+  .card-stars {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--ink-mid);
+  }
+
+  .stars { color: var(--gold); font-size: 14px; }
+
+  /* ── SECTION COMMON ── */
+  section { padding: 110px 8vw; }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 18px;
+  }
+
+  .tag::before { content: ''; width: 24px; height: 1px; background: var(--sage); }
+
+  .s-title {
+    font-family: var(--serif);
+    font-size: clamp(32px, 3.5vw, 52px);
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+    color: var(--ink);
+    max-width: 640px;
+    margin-bottom: 18px;
+  }
+
+  .s-title em { font-style: italic; color: var(--sage-dk); }
+
+  .s-desc {
+    font-size: 16px;
+    color: var(--ink-mid);
+    max-width: 520px;
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 64px;
+  }
+
+  /* ── SERVICES ── */
+  .services { background: var(--white); }
+
+  .services-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: end;
+    margin-bottom: 64px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .service-card {
+    background: var(--white);
+    padding: 40px 32px;
+    transition: background 0.3s;
+    position: relative;
+  }
+
+  .service-card:hover { background: var(--ivory); }
+
+  .service-num {
+    font-family: var(--serif);
+    font-size: 52px;
+    font-weight: 700;
+    color: rgba(28,28,26,0.05);
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+
+  .service-icon {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+    background: var(--sage-lt);
+  }
+
+  .service-icon svg { width: 22px; height: 22px; color: var(--sage-dk); }
+
+  .service-name {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .service-desc {
+    font-size: 14px;
+    color: var(--ink-lt);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* ── ABOUT ── */
+  .about {
+    background: var(--ivory);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    padding-top: 110px;
+    padding-bottom: 110px;
+  }
+
+  .about-visual {
+    position: relative;
+  }
+
+  .about-img-main {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    border-radius: 20px;
+    background: url('https://images.unsplash.com/photo-1588776814546-1ffbb172d4bb?w=700&q=80') center/cover;
+  }
+
+  .about-img-accent {
+    position: absolute;
+    bottom: -32px;
+    right: -32px;
+    width: 55%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: 16px;
+    border: 6px solid var(--ivory);
+    background: url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=500&q=80') center/cover;
+  }
+
+  .about-badge {
+    position: absolute;
+    top: 32px;
+    left: -24px;
+    background: var(--sage-dk);
+    color: white;
+    border-radius: 14px;
+    padding: 18px 24px;
+    box-shadow: 0 16px 48px rgba(28,28,26,0.2);
+  }
+
+  .about-badge-num {
+    font-family: var(--serif);
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .about-badge-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-top: 4px;
+    font-weight: 300;
+  }
+
+  .about-features { margin-top: 40px; display: flex; flex-direction: column; gap: 20px; }
+
+  .about-feat {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .feat-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--sage);
+    margin-top: 8px;
+    flex-shrink: 0;
+  }
+
+  .feat-text { font-size: 15px; color: var(--ink-mid); font-weight: 300; line-height: 1.65; }
+  .feat-text strong { color: var(--ink); font-weight: 500; }
+
+  /* ── REVIEWS ── */
+  .reviews { background: var(--sage-dk); padding: 110px 8vw; }
+  .reviews .tag { color: rgba(255,255,255,0.5); }
+  .reviews .tag::before { background: rgba(255,255,255,0.3); }
+  .reviews .s-title { color: var(--white); }
+  .reviews .s-title em { color: rgba(255,255,255,0.55); font-style: italic; }
+  .reviews .s-desc { color: rgba(255,255,255,0.5); }
+
+  .reviews-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 56px;
+  }
+
+  .reviews-summary {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 16px;
+    padding: 20px 28px;
+    min-width: 220px;
+  }
+
+  .review-avg {
+    font-family: var(--serif);
+    font-size: 52px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .review-meta { display: flex; flex-direction: column; gap: 4px; }
+  .review-stars { color: var(--gold); font-size: 18px; letter-spacing: 2px; }
+  .review-count { font-size: 12px; color: rgba(255,255,255,0.4); font-weight: 300; }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .review-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: var(--radius);
+    padding: 32px;
+    transition: background 0.3s;
+  }
+
+  .review-card:hover { background: rgba(255,255,255,0.10); }
+
+  .review-quote {
+    font-family: var(--serif);
+    font-size: 52px;
+    line-height: 0.8;
+    color: var(--sage);
+    opacity: 0.6;
+    margin-bottom: 12px;
+  }
+
+  .review-text {
+    font-size: 15px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.75;
+    font-weight: 300;
+    margin-bottom: 24px;
+    font-style: italic;
+    font-family: var(--serif);
+    font-size: 17px;
+  }
+
+  .review-footer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 20px;
+  }
+
+  .reviewer-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+    flex-shrink: 0;
+    color: white;
+  }
+
+  .reviewer-name { font-size: 14px; color: rgba(255,255,255,0.85); font-weight: 500; }
+  .reviewer-date { font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 2px; font-weight: 300; }
+  .review-rating { margin-left: auto; color: var(--gold); font-size: 13px; letter-spacing: 1px; }
+
+  /* ── CONTACT ── */
+  .contact { background: var(--white); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .contact-info { display: flex; flex-direction: column; gap: 32px; }
+
+  .contact-item {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+  }
+
+  .contact-icon {
+    width: 44px; height: 44px;
+    background: var(--sage-lt);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .contact-icon svg { width: 20px; height: 20px; color: var(--sage-dk); }
+
+  .contact-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-lt); font-weight: 500; margin-bottom: 6px; }
+  .contact-value { font-size: 16px; color: var(--ink); font-weight: 400; line-height: 1.5; }
+  .contact-value a { color: var(--sage-dk); text-decoration: none; }
+  .contact-value a:hover { text-decoration: underline; }
+
+  .contact-hours {
+    background: var(--sage-lt);
+    border-radius: var(--radius);
+    padding: 28px;
+    margin-top: 8px;
+  }
+
+  .hours-title {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--sage-dk);
+    margin-bottom: 16px;
+  }
+
+  .hours-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(106,140,114,0.15);
+    font-size: 14px;
+  }
+
+  .hours-row:last-child { border-bottom: none; }
+  .hours-day { color: var(--ink-mid); font-weight: 400; }
+  .hours-time { color: var(--sage-dk); font-weight: 500; }
+  .hours-closed { color: var(--ink-lt); font-style: italic; }
+
+  /* FORM */
+  .contact-form {
+    background: var(--ivory);
+    border-radius: 20px;
+    padding: 48px 44px;
+    border: 1px solid var(--border);
+  }
+
+  .form-title {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .form-sub {
+    font-size: 14px;
+    color: var(--ink-lt);
+    margin-bottom: 36px;
+    font-weight: 300;
+  }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+
+  .form-label {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-mid);
+  }
+
+  .form-input,
+  .form-select,
+  .form-textarea {
+    width: 100%;
+    background: var(--white);
+    border: 1px solid var(--sand);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 15px;
+    color: var(--ink);
+    font-family: var(--sans);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .form-input:focus,
+  .form-select:focus,
+  .form-textarea:focus {
+    border-color: var(--sage);
+    box-shadow: 0 0 0 3px rgba(106,140,114,0.15);
+  }
+
+  .form-textarea { resize: vertical; min-height: 120px; }
+
+  .form-select { appearance: none; cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%238A8A82' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 44px;
+  }
+
+  .form-input::placeholder,
+  .form-textarea::placeholder { color: var(--sand); }
+
+  .form-submit {
+    width: 100%;
+    background: var(--sage);
+    color: var(--white);
+    border: none;
+    padding: 17px;
+    border-radius: 100px;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: var(--sans);
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 8px;
+  }
+
+  .form-submit:hover { background: var(--sage-dk); transform: translateY(-2px); }
+  .form-submit svg { width: 18px; height: 18px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    padding: 56px 8vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .footer-brand {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .footer-copy { font-size: 13px; color: rgba(255,255,255,0.3); font-weight: 300; }
+
+  .footer-links {
+    display: flex; gap: 28px; list-style: none;
+  }
+
+  .footer-links a {
+    color: rgba(255,255,255,0.35);
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: rgba(255,255,255,0.7); }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.75s ease, transform 0.75s ease;
+  }
+
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* ── THANK YOU OVERLAY ── */
+  #ty-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgba(28,28,26,0.95);
+    backdrop-filter: blur(16px);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+  }
+
+  #ty-overlay.show { display: flex; }
+
+  .ty-box { max-width: 460px; width: 100%; }
+
+  .ty-check {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: rgba(106,140,114,0.15);
+    border: 2px solid rgba(106,140,114,0.4);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 32px;
+  }
+
+  .ty-tag {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--sage); margin-bottom: 16px;
+    font-weight: 500;
+  }
+
+  .ty-title {
+    font-family: var(--serif);
+    font-size: clamp(30px, 5vw, 48px);
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .ty-desc {
+    font-size: 16px; color: rgba(255,255,255,0.45);
+    font-weight: 300; line-height: 1.75; margin-bottom: 40px;
+  }
+
+  .ty-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--sage); color: var(--white);
+    padding: 14px 30px; border-radius: 100px;
+    font-size: 15px; font-weight: 500; font-family: var(--sans);
+    text-decoration: none; cursor: pointer;
+    transition: background 0.2s;
+    border: none;
+  }
+
+  .ty-btn:hover { background: var(--sage-dk); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .services-header { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .about { grid-template-columns: 1fr; gap: 60px; }
+    .about-visual { max-width: 480px; }
+    .reviews-grid { grid-template-columns: 1fr 1fr; }
+    .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 5vw; }
+    .nav-links { display: none; }
+    section { padding: 72px 6vw; }
+    .services-grid { grid-template-columns: 1fr; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .reviews-header { flex-direction: column; align-items: flex-start; gap: 24px; }
+    .contact-form { padding: 32px 24px; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; text-align: center; }
+    .footer-links { justify-content: center; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-left { padding: 60px 6vw; }
+    .hero-title { font-size: clamp(38px, 9vw, 54px); }
+    .about-img-accent { display: none; }
+    .about-badge { display: none; }
+  }
+
+  /* ── LOCATION ── */
+  .location { background: var(--cream); padding: 110px 8vw; }
+
+  .location-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .location-info { display: flex; flex-direction: column; gap: 28px; }
+
+  .location-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    transition: box-shadow 0.2s;
+  }
+
+  .location-card:hover { box-shadow: 0 8px 32px rgba(28,28,26,0.07); }
+
+  .loc-icon {
+    width: 44px; height: 44px;
+    background: var(--sage-lt);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .loc-icon svg { width: 20px; height: 20px; color: var(--sage-dk); }
+  .loc-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-lt); font-weight: 500; margin-bottom: 5px; }
+  .loc-value { font-size: 15px; color: var(--ink); font-weight: 400; line-height: 1.55; }
+
+  .map-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--sage);
+    color: var(--white);
+    text-decoration: none;
+    padding: 15px 28px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: var(--sans);
+    letter-spacing: 0.05em;
+    transition: background 0.2s, transform 0.2s;
+    margin-top: 8px;
+  }
+
+  .map-btn:hover { background: var(--sage-dk); transform: translateY(-2px); }
+  .map-btn svg { width: 16px; height: 16px; }
+
+  .map-embed-wrap {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 20px 60px rgba(28,28,26,0.10);
+    position: relative;
+    background: var(--sand);
+  }
+
+  .map-embed-wrap iframe {
+    display: block;
+    width: 100%;
+    height: 480px;
+    border: none;
+  }
+
+  .map-overlay-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: var(--white);
+    color: var(--sage-dk);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: var(--sans);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    box-shadow: 0 4px 20px rgba(28,28,26,0.15);
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .map-overlay-btn:hover { background: var(--sage); color: var(--white); }
+  .map-overlay-btn svg { width: 14px; height: 14px; }
+
+  @media (max-width: 1024px) {
+    .location-grid { grid-template-columns: 1fr; }
+    .map-embed-wrap iframe { height: 380px; }
+  }
+
+  @media (max-width: 768px) {
+    .map-embed-wrap iframe { height: 300px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-brand">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <path d="M12 2C8 2 5 5.5 5 9c0 2.5 1 4.5 2.5 5.5L9 22h6l1.5-7.5C18 13.5 19 11.5 19 9c0-3.5-3-7-7-7z"/>
+      </svg>
+    </div>
+    <div class="nav-brand-text">
+      <span class="nav-brand-name">Centre Dentaire Aït Taleb</span>
+      <span class="nav-brand-sub">Soins dentaires de confiance</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#avis">Avis patients</a></li>
+    <li><a href="#localisation">Localisation</a></li>
+    <li><a href="#contact" class="nav-cta">Prendre RDV</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="accueil">
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <span class="hero-eyebrow-line"></span>
+      Votre santé bucco-dentaire
+    </div>
+    <h1 class="hero-title">
+      Un sourire<br>
+      <em>sain</em> commence<br>
+      ici.
+    </h1>
+    <p class="hero-desc">
+      Le Centre Dentaire Aït Taleb vous accueille dans un environnement moderne et bienveillant. Des soins personnalisés, une équipe à l'écoute — parce que votre confort est notre priorité.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">
+        Prendre un rendez-vous
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#services" class="btn-ghost">Découvrir nos soins</a>
+    </div>
+    <div class="hero-badges">
+      <div class="hero-badge">
+        <div class="badge-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="badge-label"><strong>Soins modernes</strong>Technologies de pointe</div>
+      </div>
+      <div class="hero-badge">
+        <div class="badge-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div class="badge-label"><strong>Patient au cœur</strong>Écoute & bienveillance</div>
+      </div>
+      <div class="hero-badge">
+        <div class="badge-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="badge-label"><strong>Urgences</strong>Prise en charge rapide</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-wrap"></div>
+    <div class="hero-img-card">
+      <div class="card-stat-num">+500</div>
+      <div class="card-stat-label">patients satisfaits</div>
+      <div class="card-divider"></div>
+      <div class="card-stars">
+        <span class="stars">★★★★★</span>
+        <span>4.9 / 5 — Avis patients</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-header reveal">
+    <div>
+      <div class="tag">Nos prestations</div>
+      <h2 class="s-title">Des soins complets pour toute la <em>famille</em></h2>
+    </div>
+    <p class="s-desc" style="margin-bottom:0;">De la détartrage à l'implantologie, nous vous accompagnons à chaque étape de votre santé bucco-dentaire avec les meilleures techniques du moment.</p>
+  </div>
+
+  <div class="services-grid reveal">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M12 2C8 2 5 5.5 5 9c0 2.5 1 4.5 2.5 5.5L9 22h6l1.5-7.5C18 13.5 19 11.5 19 9c0-3.5-3-7-7-7z"/>
+        </svg>
+      </div>
+      <div class="service-name">Soins conservateurs</div>
+      <div class="service-desc">Détartrage, dévitalisation, traitement des caries — pour préserver votre capital dentaire naturel le plus longtemps possible.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+          <line x1="9" y1="9" x2="9.01" y2="9"/>
+          <line x1="15" y1="9" x2="15.01" y2="9"/>
+        </svg>
+      </div>
+      <div class="service-name">Esthétique dentaire</div>
+      <div class="service-desc">Blanchiment, facettes, composite — retrouvez un sourire lumineux et naturel grâce à nos traitements esthétiques sur mesure.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+      </div>
+      <div class="service-name">Prothèse dentaire</div>
+      <div class="service-desc">Couronnes, bridges, prothèses amovibles ou sur implants — des solutions durables pour remplacer vos dents manquantes.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+        </svg>
+      </div>
+      <div class="service-name">Implantologie</div>
+      <div class="service-desc">Implants dentaires posés par des spécialistes pour une intégration parfaite et un résultat identique à la dent naturelle.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">05</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+      </div>
+      <div class="service-name">Dentisterie pédiatrique</div>
+      <div class="service-desc">Un environnement rassurant et adapté aux enfants pour les initier à une bonne hygiène bucco-dentaire dès le plus jeune âge.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">06</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/>
+        </svg>
+      </div>
+      <div class="service-name">Orthodontie</div>
+      <div class="service-desc">Bagues traditionnelles ou gouttières invisibles pour aligner votre dentition et corriger les malpositions, à tout âge.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-visual reveal">
+    <div class="about-img-main"></div>
+    <div class="about-img-accent"></div>
+    <div class="about-badge">
+      <div class="about-badge-num">5+</div>
+      <div class="about-badge-label">Années<br>d'expérience</div>
+    </div>
+  </div>
+
+  <div class="reveal">
+    <div class="tag">À propos du cabinet</div>
+    <h2 class="s-title">Une équipe dédiée à votre <em>bien-être</em></h2>
+    <p class="s-desc">
+      Fondé avec la conviction que les soins dentaires de qualité doivent être accessibles à tous, le Centre Dentaire Aït Taleb rassemble des praticiens expérimentés dans un espace moderne et apaisant.
+    </p>
+    <div class="about-features">
+      <div class="about-feat">
+        <div class="feat-dot"></div>
+        <div class="feat-text"><strong>Équipements de dernière génération</strong> — radiographies numériques, scanner 3D, matériaux biocompatibles de haute qualité.</div>
+      </div>
+      <div class="about-feat">
+        <div class="feat-dot"></div>
+        <div class="feat-text"><strong>Devis gratuit et transparent</strong> — pas de mauvaises surprises. Chaque plan de traitement est expliqué en détail avant toute intervention.</div>
+      </div>
+      <div class="about-feat">
+        <div class="feat-dot"></div>
+        <div class="feat-text"><strong>Hygiène irréprochable</strong> — protocoles de stérilisation stricts conformes aux normes internationales en vigueur.</div>
+      </div>
+      <div class="about-feat">
+        <div class="feat-dot"></div>
+        <div class="feat-text"><strong>Urgences acceptées</strong> — douleur aiguë, dent cassée, abcès ? Nous faisons le possible pour vous recevoir le jour même.</div>
+      </div>
+    </div>
+    <a href="#contact" class="btn-primary" style="margin-top: 40px; display: inline-flex;">
+      Nous contacter
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="avis">
+  <div class="reviews-header reveal">
+    <div>
+      <div class="tag">Témoignages</div>
+      <h2 class="s-title" style="margin-bottom:0;">Ce que disent nos <em>patients</em></h2>
+    </div>
+    <div class="reviews-summary">
+      <div class="review-avg">4.7</div>
+      <div class="review-meta">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-count">Basé sur 20+ avis</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reviews-grid reveal">
+
+    <div class="review-card">
+      <div class="review-quote">"</div>
+      <p class="review-text">Docteur Ikram un grand merci pour votre professionnalisme et votre douceur. Mes bagues sont impeccables, je suis vraiment ravie du résultat 🤍😊 …</p>
+      <div class="review-footer">
+        <div class="reviewer-avatar" style="background: #4A7A8A;">MM</div>
+        <div>
+          <div class="reviewer-name">mahdi missaoui</div>
+          <div class="reviewer-date">Avril 2026</div>
+        </div>
+        <div class="review-rating">★★★★★</div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-quote">"</div>
+      <p class="review-text">Excellente dentiste!<br>Dr Ikram est attentionnée et compétente. Le cabinet est propre et agréable, je recommande vivement.</p>
+      <div class="review-footer">
+        <div class="reviewer-avatar" style="background: var(--sage);">R</div>
+        <div>
+          <div class="reviewer-name">Rafik.</div>
+          <div class="reviewer-date">Juin 2025</div>
+        </div>
+        <div class="review-rating">★★★★★</div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-quote">"</div>
+      <p class="review-text">merci pour cette belle expérience. médecin a l'écoute très douce et gentille. <br>je la recommande les yeux fermés</p>
+      <div class="review-footer">
+        <div class="reviewer-avatar" style="background: #7A6FA0;">AZ</div>
+        <div>
+          <div class="reviewer-name">askhatir zakia</div>
+          <div class="reviewer-date">Mai 2024</div>
+        </div>
+        <div class="review-rating">★★★★★</div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-quote">"</div>
+      <p class="review-text">Je recommande vivement Dr Ikram pour son professionnalisme,son sens de responsabilité..ses conseils et de sa sympathie..Merci d'avoir redonner de l'éclat à mon sourire. <br>Merci docteur !</p>
+      <div class="review-footer">
+        <div class="reviewer-avatar" style="background: var(--sage-dk);">KA</div>
+        <div>
+          <div class="reviewer-name">kaoun anass</div>
+          <div class="reviewer-date">Mai 2025</div>
+        </div>
+        <div class="review-rating">★★★★★</div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-quote">"</div>
+      <p class="review-text">10/10<br>C'est le genre d'endroit que votre personne préférée vous recommanderait. Avec cette équipe, vous bénéficierez d'une expérience cinq étoiles dès votre première consultation et jusqu'à ce qu'ils deviennent le dentiste de votre famille.</p>
+      <div class="review-footer">
+        <div class="reviewer-avatar" style="background: #C07A5A;">NA</div>
+        <div>
+          <div class="reviewer-name">Nour-eddine Ait bih</div>
+          <div class="reviewer-date">Mai 2026</div>
+        </div>
+        <div class="review-rating">★★★★★</div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-quote">"</div>
+      <p class="review-text">Excellent dentiste ! <br>Elle est très professionnelle et à l'écoute. Le centre est  propre et moderne. <br>Je recommande vivement Dr. Ait taleb pour des soins dentaires de qualité.</p>
+      <div class="review-footer">
+        <div class="reviewer-avatar" style="background: var(--gold);">ZH</div>
+        <div>
+          <div class="reviewer-name">Zahra Hichar</div>
+          <div class="reviewer-date">Mai 2025</div>
+        </div>
+        <div class="review-rating">★★★★★</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-grid">
+    <div class="reveal">
+      <div class="tag">Contact & horaires</div>
+      <h2 class="s-title">Prenez <em>rendez-vous</em> dès aujourd'hui</h2>
+      <p class="s-desc">Notre secrétariat est disponible pour répondre à toutes vos questions et planifier votre consultation.</p>
+
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.3h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91A16 16 0 0 0 15.1 15.9l.76-.77a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="contact-label">Téléphone</div>
+            <div class="contact-value"><a href="tel:+212660481710">+212 6 60 48 17 10</a></div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.3h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91A16 16 0 0 0 15.1 15.9l.76-.77a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="contact-label">Fix</div>
+            <div class="contact-value"><a href="tel:+212525242304">+212 5 25 24 23 04</a></div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <div>
+            <div class="contact-label">Adresse</div>
+            <div class="contact-value">Benguerir, Maroc</div>
+          </div>
+        </div>
+
+        <div class="contact-hours">
+          <div class="hours-title">Horaires d'ouverture</div>
+          <div class="hours-row">
+            <span class="hours-day">Lundi – Vendredi</span>
+            <span class="hours-time">09h00 – 18h00</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Samedi - Dimanche</span>
+            <span class="hours-closed">Fermé</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <div class="contact-form">
+        <div class="form-title">Demande de rendez-vous</div>
+        <div class="form-sub">Remplissez ce formulaire et nous vous contacterons dans les 24h.</div>
+
+        <!-- ⚠️ Remplacez YOUR_ACCESS_KEY_HERE par votre clé Web3Forms -->
+        <form id="rdv-form" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+          <input type="hidden" name="subject" value="Nouvelle demande de RDV — Centre Dentaire Aït Taleb">
+          <input type="hidden" name="from_name" value="Site Web Centre Dentaire Aït Taleb">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Prénom</label>
+              <input type="text" name="prenom" class="form-input" placeholder="Votre prénom" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Nom</label>
+              <input type="text" name="nom" class="form-input" placeholder="Votre nom" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Téléphone</label>
+              <input type="tel" name="telephone" class="form-input" placeholder="06 00 00 00 00" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email (optionnel)</label>
+              <input type="email" name="email" class="form-input" placeholder="votre@email.ma">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Type de soin</label>
+            <select name="soin" class="form-select" required>
+              <option value="" disabled selected>Choisissez un soin…</option>
+              <option value="consultation">Consultation générale</option>
+              <option value="conservateur">Soins conservateurs</option>
+              <option value="esthetique">Esthétique dentaire</option>
+              <option value="prothese">Prothèse dentaire</option>
+              <option value="implant">Implantologie</option>
+              <option value="pediatrie">Dentisterie pédiatrique</option>
+              <option value="orthodontie">Orthodontie</option>
+              <option value="urgence">Urgence</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Message (optionnel)</label>
+            <textarea name="message" class="form-textarea" placeholder="Décrivez brièvement votre demande…"></textarea>
+          </div>
+
+          <button type="submit" class="form-submit">
+            Envoyer ma demande
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="location" id="localisation">
+  <div class="reveal" style="margin-bottom: 56px;">
+    <div class="tag">Nous trouver</div>
+    <h2 class="s-title">Notre <em>localisation</em></h2>
+    <p class="s-desc" style="margin-bottom:0;">Facilement accessible au cœur de Benguerir. Venez nous rendre visite ou utilisez notre itinéraire Google Maps pour trouver votre chemin.</p>
+  </div>
+
+  <div class="location-grid reveal">
+    <div class="location-info">
+
+      <div class="location-card">
+        <div class="loc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+        <div>
+          <div class="loc-label">Adresse</div>
+          <div class="loc-value">Benguerir, Maroc</div>
+        </div>
+      </div>
+
+      <div class="location-card">
+        <div class="loc-icon" style="font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--sage-dk);">P</div>
+        <div>
+          <div class="loc-label">Accès & parking</div>
+          <div class="loc-value">Parking disponible à proximité.<br>Accessible en voiture, taxi et transport en commun.</div>
+        </div>
+      </div>
+
+      <div class="location-card">
+        <div class="loc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <div>
+          <div class="loc-label">Horaires</div>
+          <div class="loc-value">Lun – Ven : 09h00 – 18h00</div>
+        </div>
+      </div>
+
+      <a href="https://maps.app.goo.gl/7AtZY6VhHQpciSMi9?g_st=iw" target="_blank" rel="noopener noreferrer" class="map-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+        </svg>
+        Ouvrir dans Google Maps
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px;opacity:0.7;">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+        </svg>
+      </a>
+
+    </div>
+
+    <div class="map-embed-wrap">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3375.1000706609716!2d-7.955256699999998!3d32.228471899999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdaf7b5a97ce779b%3A0xaac1fab569d8ec97!2sCentre%20Dentaire%20Ait%20taleb!5e0!3m2!1sfr!2sru!4v1779533212913!5m2!1sfr!2sru" 
+      width="600" 
+      height="450" 
+      style="border:0;" 
+      allowfullscreen="" 
+      loading="lazy" 
+      referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+      <a href="https://maps.app.goo.gl/7AtZY6VhHQpciSMi9?g_st=iw" target="_blank" rel="noopener noreferrer" class="map-overlay-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+        </svg>
+        Ouvrir dans Maps
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- THANK YOU OVERLAY -->
+<div id="ty-overlay">
+  <div class="ty-box">
+    <div class="ty-check">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+        <path id="ty-path" d="M8 18l7 7 13-13" stroke="#6A8C72" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+          style="stroke-dasharray:40;stroke-dashoffset:40;transition:stroke-dashoffset 0.7s ease 0.2s;"/>
+      </svg>
+    </div>
+    <div class="ty-tag">Demande envoyée ✓</div>
+    <h2 class="ty-title">Merci pour votre<br>confiance !</h2>
+    <p class="ty-desc">Votre demande de rendez-vous a bien été reçue.<br>Notre équipe vous contactera dans les 24 heures pour confirmer votre consultation.</p>
+    <button class="ty-btn" onclick="closeTY()">
+      Retour au site
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Centre Dentaire Aït Taleb</div>
+  <span class="footer-copy">© Centre Dentaire Aït Taleb. Benguerir, Maroc</span>
+  <ul class="footer-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#avis">Avis</a></li>
+    <li><a href="#localisation">Localisation</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</footer>
+
+<script>
+  // Nav scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const revObs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('in'), i * 90);
+      }
+    });
+  }, { threshold: 0.10 });
+  reveals.forEach(el => revObs.observe(el));
+
+  // Form submission
+  const form = document.getElementById('rdv-form');
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = form.querySelector('.form-submit');
+    btn.textContent = 'Envoi en cours…';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        showTY(); form.reset();
+      } else {
+        btn.innerHTML = 'Erreur — veuillez réessayer';
+        btn.disabled = false;
+      }
+    } catch {
+      btn.innerHTML = 'Erreur — veuillez réessayer';
+      btn.disabled = false;
+    }
+  });
+
+  function showTY() {
+    document.getElementById('ty-overlay').classList.add('show');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => { document.getElementById('ty-path').style.strokeDashoffset = '0'; }, 100);
+  }
+
+  function closeTY() {
+    document.getElementById('ty-overlay').classList.remove('show');
+    document.body.style.overflow = '';
+    document.getElementById('ty-path').style.strokeDashoffset = '40';
+    const btn = form.querySelector('.form-submit');
+    btn.innerHTML = 'Envoyer ma demande <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>';
+    btn.disabled = false;
+  }
+</script>
+</body>
+</html>
